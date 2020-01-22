@@ -5,9 +5,24 @@ using Platform2DUtils.GameplaySystem;
 
 public class Character2D : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 7f;
-    void Update()
+
+    //si se pone protected se puede ver en todo lo que lo herede
+    protected SpriteRenderer spr;
+    protected Animator anim;
+
+    [SerializeField] protected float moveSpeed = 7f;
+
+    void Awake()
     {
-        GameplaySystem.TMovementDelta(this.transform,moveSpeed);
+        spr = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
+
+   protected bool FlipSprite
+    {
+        //Operacion ternaria
+        // condicion ? si es verdad : si es falso
+        get => GameplaySystem.Axis.x < 0f ? true : GameplaySystem.Axis.x > 0 ? false : spr.flipX;
+    }
+ 
 }

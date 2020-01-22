@@ -411,10 +411,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1611558797}
   - component: {fileID: 1611558796}
-  - component: {fileID: 1611558798}
   - component: {fileID: 1611558800}
   - component: {fileID: 1611558801}
   - component: {fileID: 1611558799}
+  - component: {fileID: 1611558798}
   m_Layer: 0
   m_Name: Character2D
   m_TagString: Untagged
@@ -495,16 +495,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1611558795}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f01e9fc44d500f43bb3d4559ca184cc, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e1aeea89236ffb4faae07e793878448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  rayColor: {r: 0.5566038, g: 0.06872512, b: 0.002625496, a: 1}
-  rayDistance: 2.7
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  jumpForce: 6
+  moveSpeed: 7
 --- !u!70 &1611558799
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
