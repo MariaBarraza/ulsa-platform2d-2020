@@ -16,6 +16,13 @@ public class Player : Character2D
     void LateUpdate()
     {
         spr.flipX = FlipSprite;
-        anim.SetFloat("moveX", Mathf.Abs(GameplaySystem.Axis.x));
+        anim.SetFloat("axisX", Mathf.Abs(GameplaySystem.Axis.x));
+
+        if(GameplaySystem.JumpBtn)
+        {
+            anim.SetTrigger("Jump");
+            GameplaySystem.Jump(rb2D,jumpForce);
+        }
+
     }
 }
