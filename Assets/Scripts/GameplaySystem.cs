@@ -11,6 +11,7 @@
         {
             get => new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
         }
+
          /// <summary>
         /// Moves player in Horizontal axis with keyboard inputs using cpu speed.
         /// </summary>
@@ -21,6 +22,7 @@
         {
             t.Translate(Vector2.right * moveSpeed * Axis.x);
         }
+
          /// <summary>
         /// Moves player in Horizontal axis with keyboard inputs using time.
         /// </summary>
@@ -39,11 +41,14 @@
         {
             get => Input.GetButtonDown("Jump");
         }
-
+        /// <summary>
+        /// Makes the player jump
+        /// </summary>
         public static void Jump(Rigidbody2D rb2D, float jumpForce)
         {
             rb2D.AddForce(Vector2.up * jumpForce,ForceMode2D.Impulse);
         }
+
 
     }
 }

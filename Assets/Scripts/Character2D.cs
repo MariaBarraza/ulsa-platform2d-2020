@@ -11,6 +11,12 @@ public class Character2D : MonoBehaviour
     protected Animator anim;
 
     protected Rigidbody2D rb2D;
+    
+    //Raycast
+    [SerializeField] Color rayColor = Color.red;
+    [SerializeField, Range(0.1f, 5f)] float rayDistance = 5f;
+    [SerializeField] LayerMask groundLayer;
+
 
     [SerializeField,Range(1f,10f)] protected float jumpForce = 7f;
 
@@ -29,5 +35,16 @@ public class Character2D : MonoBehaviour
         // condicion ? si es verdad : si es falso
         get => GameplaySystem.Axis.x < 0f ? true : GameplaySystem.Axis.x > 0 ? false : spr.flipX;
     }
- 
+
+    protected bool Grounding
+    {
+        get => Physics2D.Raycast(transform.position, Vector2.down, rayDistance, groundLayer);
+    }
+
+    //Drawing raycast
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = rayColor;
+        Gizmos.DrawRay(transform.position, Vector2.down * rayDistance);
+    }
 }
