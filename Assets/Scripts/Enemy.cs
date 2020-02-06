@@ -2,16 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IFlip
 {
+  
     [SerializeField]
-    float speed;
-    // Start is called before the first frame update
-   
+    float moveSpeed = 3f;
+    [SerializeField]
+    float delay;
+    float timer;
 
-    // Update is called once per frame
+    [SerializeField]
+    Vector2 dir;
+
+    public void FlipSprite()
+    {
+        throw new System.NotImplementedException();
+    }
+
     void Update()
     {
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
+        transform.Translate(dir * moveSpeed * Time.deltaTime);
+
+        timer +=  Time.deltaTime;
+        if(timer >= delay)
+        {
+            timer = 0f;
+            //dir = dir == Vector2.right ? Vector2.left : Vector2.right;
+            dir.x = dir.x > 0 ? -1 : 1;
+        }
     }
 }
