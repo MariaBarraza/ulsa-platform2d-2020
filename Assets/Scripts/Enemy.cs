@@ -2,22 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IFlip
+public class Enemy : Character2D
 {
-  
-    [SerializeField]
-    float moveSpeed = 3f;
     [SerializeField]
     float delay;
     float timer;
 
     [SerializeField]
     Vector2 dir;
-
-    public void FlipSprite()
-    {
-        throw new System.NotImplementedException();
-    }
+   
 
     void Update()
     {
@@ -29,6 +22,14 @@ public class Enemy : MonoBehaviour, IFlip
             timer = 0f;
             //dir = dir == Vector2.right ? Vector2.left : Vector2.right;
             dir.x = dir.x > 0 ? -1 : 1;
+            //FlipSprite();
+            IFlip flip = new NPCFlip();
+            spr.flipX=flip.FlipSprite(dir.x,spr);
         }
     }
+
+    /*public bool FlipSprite()
+    {
+        get => dir.x > 0 ? false : true;
+    }*/
 }

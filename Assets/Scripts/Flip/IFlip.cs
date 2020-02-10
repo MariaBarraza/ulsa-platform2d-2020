@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-interface IFlip  
+interface IFlip 
 {
-    void FlipSprite();
-    
+    bool FlipSprite(float x, SpriteRenderer spr);
 }

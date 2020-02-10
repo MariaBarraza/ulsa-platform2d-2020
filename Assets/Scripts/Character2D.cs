@@ -30,10 +30,10 @@ public class Character2D : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
     }
 
-    protected bool FlipSprite
+    /*protected bool FlipSprite
     {
         get => GameplaySystem.Axis.x < 0 ? true : GameplaySystem.Axis.x > 0 ? false : spr.flipX;
-    }
+    }*/
 
     protected bool Grounding
     {
