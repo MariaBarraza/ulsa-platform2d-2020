@@ -5,14 +5,9 @@ using Platform2DUtils.GameplaySystem;
 
 public class Player : Character2D
 {
+
     [SerializeField]
     float maxVel;
-    
-
-    void Update()
-    {
-        //GameplaySystem.MovementAddForce(rb2D, moveSpeed);
-    }
 
     void FixedUpdate()
     {
@@ -25,16 +20,22 @@ public class Player : Character2D
             }
         }
         anim.SetBool("grounding", Grounding);
+
         GameplaySystem.MovementAddForce(rb2D, moveSpeed);
-        float velXClamp = Mathf.Clamp(rb2D.velocity.x,-maxVel,maxVel);
-        rb2D.velocity = new Vector2(maxVel,rb2D.velocity.y);
+        float velXClamp = Mathf.Clamp(rb2D.velocity.x, -maxVel, maxVel);
+        rb2D.velocity = new Vector2(velXClamp, rb2D.velocity.y);
+    }
+
+    void Update()
+    {
+        //GameplaySystem.TMovementDelta(transform, moveSpeed);
     }
 
     void LateUpdate()
     {
         //spr.flipX = FlipSprite;
-         IFlip flip = new PlayerFlip();
-            spr.flipX=flip.FlipSprite(GameplaySystem.Axis.x,spr);
+        IFlip flip = new PlayerFlip();
+        spr.flipX = flip.FlipSprite(GameplaySystem.Axis.x, spr);
         anim.SetFloat("axisX", Mathf.Abs(GameplaySystem.Axis.x));
     }
 

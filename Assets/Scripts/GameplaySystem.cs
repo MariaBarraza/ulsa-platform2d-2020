@@ -21,6 +21,16 @@ namespace Platform2DUtils.GameplaySystem
         {
             t.Translate(Vector2.right * Axis.x * moveSpeed);
         }
+
+        ///<summary>
+        /// Moves player in Horizontal axis with keyboard inputs uisng force.
+        ///</summary>
+        ///<param name="rb2D">Rigidbody2D component of the player</param>
+        ///<param name="moveSpeed">The coeficient of speed</param>
+        public static void MovementAddForce(Rigidbody2D rb2D, float moveSpeed)
+        {
+            rb2D.AddForce(Vector2.right * moveSpeed * Axis.x, ForceMode2D.Impulse);
+        }
         
         ///<summary>
         /// Moves player in Horizontal axis with keyboard inputs and multiplied by delta time.
@@ -30,16 +40,6 @@ namespace Platform2DUtils.GameplaySystem
         public static void TMovementDelta(Transform t, float moveSpeed)
         {
             t.Translate(Vector2.right * Axis.x * moveSpeed * Time.deltaTime);
-        }
-
-        ///<summary>
-        /// Moves player in Horizontal axis with keyboard inputs using force.
-        ///</summary>
-        ///<param name="rb2D">Rigidbody2D component of the player</param>
-        ///<param name="moveSpeed">The coeficient of speed</param>
-        public static void MovementAddForce(Rigidbody2D rb2D,float moveSpeed)
-        {
-            rb2D.AddForce(Vector2.right * moveSpeed * Axis.x,ForceMode2D.Impulse);
         }
 
         ///<summary>
