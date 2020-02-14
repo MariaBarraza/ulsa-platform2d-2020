@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using UnityEngine.SceneManagement;
 
 public class Gamemanager : MonoBehaviour
 {
@@ -12,6 +13,20 @@ public class Gamemanager : MonoBehaviour
 
     void Awake()
     {
-        instance = this;
+        if(instance)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+
+        DontDestroyOnLoad(gameObject);
+    }
+    void Start()
+    {
+       /* int scene = SceneManager.GetActiveScene().buildIndex;
+        score.gameObject.SetActive(scene > 0);*/
     }
 }
