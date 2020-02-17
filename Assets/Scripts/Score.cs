@@ -11,7 +11,11 @@ public class Score : MonoBehaviour
     [SerializeField]
     int currentScore;
 
-
+    void Awake()
+    {
+        txtScore = GetComponent<Text>();
+    }
+    
     public void AddPoints(int points)
     {
         currentScore += points;
