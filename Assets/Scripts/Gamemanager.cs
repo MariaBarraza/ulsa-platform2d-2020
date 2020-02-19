@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 //using UnityEngine.SceneManagement;
+using Platform2DUtils.MemorySystem;
 
 public class Gamemanager : MonoBehaviour
 {
@@ -11,6 +12,12 @@ public class Gamemanager : MonoBehaviour
 
     public Score Score { get => score; }
 
+    
+    /*GameData gameData;
+
+    public GameData GameData { get => gameData; set => gameData = value; }*/
+
+    public GameData gameData {get; set;}
     void Awake()
     {
         if(instance)
@@ -20,10 +27,18 @@ public class Gamemanager : MonoBehaviour
         else
         {
             instance = this;
+            gameData = new GameData();
         }
 
         DontDestroyOnLoad(gameObject);
+        
     }
+
+    public void Save()
+    {
+        MemorySystem.SaveData(gameData);
+    }
+
     void Start()
     {
        /* int scene = SceneManager.GetActiveScene().buildIndex;
