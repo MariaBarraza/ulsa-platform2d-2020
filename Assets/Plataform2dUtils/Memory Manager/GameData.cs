@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-
 [Serializable]
-public class GameData
+public class GameData 
 {
     [SerializeField]
     Player player;
+    [SerializeField]
+    Vector3 playerPos;
 
-    public Player GetPlayer
+    public Player Player
     {
         get => player;
         set => player = value;
     }
-
+    public Vector3 PlayerPos { get => playerPos; set => playerPos = value; }
 }

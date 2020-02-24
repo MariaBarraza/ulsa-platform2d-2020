@@ -11,23 +11,35 @@ public class Player : Character2D
 
     void Start()
     {
-        Gamemanager.instance.gameData.GetPlayer = this;
-        Gamemanager.instance.Save();
+        //Gamemanager.instance.gameData.Player = this;
+        //Gamemanager.instance.Save();
+        //Gamemanager.instance.Load();
+        transform.position = Gamemanager.instance.gameData.PlayerPos;
     }
+
+    public Player()
+    {
+        
+    }
+
     void FixedUpdate()
     {
         if(GameplaySystem.JumpBtn)
         {
             if(Grounding)
             {
+                Gamemanager.instance.gameData.PlayerPos = transform.position;
+                //Debug.Log(Gamemanager.instance.gameData.Player);
+                Gamemanager.instance.Save();
+                
                 anim.SetTrigger("jump");
                 GameplaySystem.Jump(rb2D, jumpForce);
             }
         }
         anim.SetBool("grounding", Grounding);
 
-        GameplaySystem.MovementVelocity(rb2D, moveSpeed,maxVel);
-      
+        //GameplaySystem.MovementAddForce(rb2D, moveSpeed, maxVel, Grounding);
+        GameplaySystem.MovementVelocity(rb2D, moveSpeed, maxVel);
     }
 
     void Update()
