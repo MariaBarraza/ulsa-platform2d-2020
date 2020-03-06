@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-
 
 public class Score : MonoBehaviour
 {
@@ -15,7 +13,7 @@ public class Score : MonoBehaviour
     {
         txtScore = GetComponent<Text>();
     }
-    
+
     public void AddPoints(int points)
     {
         currentScore += points;

@@ -11,8 +11,19 @@ namespace Platform2DUtils.MemorySystem
 
         static string path = $"{Application.persistentDataPath}/myGame.data";
 
-        public static void SaveData(GameData gameData)
+          public static void SaveData(GameData gameData)
         {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Create(path);
+            string json = JsonUtility.ToJson(gameData);
+            bf.Serialize(file, json);
+            file.Close();
+            Debug.Log(path);
+        }
+
+        public static void SaveData(GameData gameData, string fileName)
+        {
+            string path = $"{Application.persistentDataPath}/{fileName}.data";
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Create(path);
             string json = JsonUtility.ToJson(gameData);
